@@ -7,6 +7,7 @@ import { BookingFormComponent } from './components/booking-form/booking-form.com
 import { DeleteBookingComponent } from './components/delete-booking/delete-booking.component';
 import { UpdateBookingComponent } from './components/update-booking/update-booking.component';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+import { FindBookingComponent } from './components/find-booking/find-booking.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CreateBookingComponent } from './components/create-booking/create-booki
     BookingFormComponent,
     DeleteBookingComponent,
     UpdateBookingComponent,
-    CreateBookingComponent
+    CreateBookingComponent,
+    FindBookingComponent,
   ],
   imports: [
     CommonModule,

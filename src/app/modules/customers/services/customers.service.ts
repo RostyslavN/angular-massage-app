@@ -1,32 +1,32 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Inject, Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, DocumentData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
-import { CustomerProfile } from '../models/customerProfile';
+import { InitialServiceClass } from '../../shared/classes/initial-service.class';
+import { CustomerProfile } from '../models/customerProfile.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomersService {
-  private collectionName: string = 'customers';
+export class CustomersService extends InitialServiceClass {
 
-  constructor(private store: AngularFirestore) { }
-
-  private collection(): AngularFirestoreCollection {
-    return this.store.collection(this.collectionName);
+  constructor(store: AngularFirestore, @Inject(String) collectionName: string ) {
+    super(store, collectionName);
+    this.collectionName = 'customers';
   }
 
-  getCustomers() {
-    return this.collection().valueChanges({ idFiled: 'id' });
+  getAll(): Observable<DocumentData[]> {
+    return this.collection.valueChanges({ idFiled: 'id' });
   }
 
   // getCustomerAvailableTime(id: string) {
   //   return this.collection().doc(id).get('availableTime');
   // }
-  updateCustomer(id: string, newDate: CustomerProfile): void {
-    this.collection().doc(id).update(newDate);
+  update(id: string, newDate: CustomerProfile) {
+    return this.collection.doc(id).update(newDate);
   }
 
-  disableCustomer(id: string): void {
-    this.collection().doc(id).update({'isClient': false});
+  disable(id: string) {
+    return this.collection.doc(id).update({'isClient': false});
   }
 }

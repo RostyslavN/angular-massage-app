@@ -5,12 +5,29 @@ import { CreateBookingComponent } from './components/create-booking/create-booki
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { UpdateBookingComponent } from './components/update-booking/update-booking.component';
 import { DeleteBookingComponent } from './components/delete-booking/delete-booking.component';
+import { FindBookingComponent } from './components/find-booking/find-booking.component';
 
 const routes: Routes = [
-  { path: 'createEvent', component: CreateBookingComponent },
+  { path: 'create', component: CreateBookingComponent },
   { path: 'schedule', component: ScheduleComponent },
-  { path: ':id/update-booking', component: UpdateBookingComponent },
-  { path: ':id/delete-booking', component: DeleteBookingComponent },
+  {
+    path: ':id',
+    children: [
+      {
+        path: 'update',
+        component: UpdateBookingComponent
+      },
+      {
+        path: 'delete',
+        component: DeleteBookingComponent
+      },
+      {
+        path: 'find',
+        component: FindBookingComponent
+      }
+    ]
+  },
+
 ];
 
 @NgModule({

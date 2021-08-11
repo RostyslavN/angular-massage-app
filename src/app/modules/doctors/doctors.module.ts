@@ -8,6 +8,7 @@ import { DoctorsListComponent } from './components/doctors-list/doctors-list.com
 import { DisableDoctorComponent } from './components/disable-doctor/disable-doctor.component';
 import { UpdateDoctorComponent } from './components/update-doctor/update-doctor.component';
 import { DoctorsFormComponent } from './components/doctors-form/doctors-form.component';
+import { FindDoctorComponent } from './components/find-doctor/find-doctor.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DoctorsFormComponent } from './components/doctors-form/doctors-form.com
     DoctorsListComponent,
     DisableDoctorComponent,
     UpdateDoctorComponent,
-    DoctorsFormComponent
+    DoctorsFormComponent,
+    FindDoctorComponent
   ],
   imports: [
     CommonModule,

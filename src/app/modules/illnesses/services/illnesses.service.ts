@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+
+import { InitialServiceClass } from '../../shared/classes/initial-service.class';
 
 @Injectable({
   providedIn: 'root'
 })
-export class IllnessesService {
-  private collectionName: string = 'illnesses';
+export class IllnessesService extends InitialServiceClass {
 
-  constructor(private store: AngularFirestore) { }
-
-  private collection(): AngularFirestoreCollection {
-    return this.store.collection(this.collectionName);
+  constructor(store: AngularFirestore, @Inject(String) collectionName: string) {
+    super(store, collectionName);
+    this.collectionName = 'illnesses';
   }
 
-  removeIllness(id: string): void {
-    this.collection().doc(id).delete();
+  remove(id: string) {
+    return this.collection.doc(id).delete();
   }
 
-  updateIllness(id: string, process: 'curing' | 'cured'): void {
-    this.collection().doc(id).update({ 'process': process });
+  update(id: string, process: 'curing' | 'cured') {
+    return this.collection.doc(id).update({ 'process': process });
   }
 }

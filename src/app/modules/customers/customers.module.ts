@@ -6,6 +6,7 @@ import { CustomerProfileComponent } from './components/customer-profile/customer
 import { CustomerFormComponent } from './components/customer-form/customer-form.component';
 import { DisableCustomerComponent } from './components/disable-customer/disable-customer.component';
 import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
+import { FindCustomerComponent } from './components/find-customer/find-customer.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { UpdateCustomerComponent } from './components/update-customer/update-cus
     CustomerFormComponent,
     DisableCustomerComponent,
     UpdateCustomerComponent,
+    FindCustomerComponent,
   ],
   imports: [
     CommonModule,

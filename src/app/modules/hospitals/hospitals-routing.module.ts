@@ -3,10 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddHospitalComponent } from './components/add-hospital/add-hospital.component';
 import { DisableHospitalComponent } from './components/disable-hospital/disable-hospital.component';
+import { FindHospitalComponent } from './components/find-hospital/find-hospital.component';
 
 const routes: Routes = [
-  { path: 'register-hospital', component: AddHospitalComponent },
-  { path: ':id/disable-hospital', component: DisableHospitalComponent },
+  { path: 'register', component: AddHospitalComponent },
+  {
+    path: ':id',
+    children: [
+      {
+        path: 'disable',
+        component: DisableHospitalComponent
+      },
+      {
+        path: 'find',
+        component: FindHospitalComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

@@ -1,38 +1,38 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Inject, Injectable } from '@angular/core';
+import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
-import { DoctorData } from '../models/doctorData';
-import { DoctorProfile } from '../models/doctorProfile';
+import { InitialServiceClass } from '../../shared/classes/initial-service.class';
+import { DoctorData } from '../models/doctorData.model';
+import { DoctorProfile } from '../models/doctorProfile.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DoctorsService {
-  private collectionName: string = 'doctors';
+export class DoctorsService extends InitialServiceClass {
 
-  constructor(private store: AngularFirestore) { }
-
-  private collection(): AngularFirestoreCollection {
-    return this.store.collection(this.collectionName);
+  constructor(store: AngularFirestore, @Inject(String) collectionName: string) {
+    super(store, collectionName);
+    this.collectionName = 'doctors';
   }
 
-  addDoctor(doctorData: DoctorData): void {
-    this.store.firestore.runTransaction(() => {
+  add(doctorData: Omit<DoctorData, 'id'|'isEmployee'>) {
+    return this.store.firestore.runTransaction(() => {
       return Promise.all([
-        this.collection().add(doctorData)
+        this.collection.add(doctorData)
       ]);
     });
   }
 
-  getDoctors() {
-    return this.collection().valueChanges({ idFiled: 'id' });
+  getAll(): Observable<DocumentData> {
+    return this.collection.valueChanges({ idFiled: 'id' });
   }
 
-  disableDoctor(id: string): void {
-    this.collection().doc(id).update({'isEmployee': false});
+  disable(id: string) {
+    return this.collection.doc(id).update({'isEmployee': false});
   }
 
-  updateDoctor(id: string, newData: DoctorProfile): void {
-    this.collection().doc(id).update(newData);
+  update(id: string, newData: DoctorProfile) {
+    return this.collection.doc(id).update(newData);
   }
 }

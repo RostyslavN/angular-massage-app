@@ -1,5 +1,5 @@
 {
-  "name": "angular-starter",
+  "name": "angular-massage-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,9 +9,8 @@
     "test": "ng test"
   },
   "author": {
-    "name": "danny",
-    "email": "danny@ganatan.com",
-    "url": "https://www.ganatan.com/"
+    "name": "NRostyslav",
+    "email": "novak.rostyslav@gmail.com"
   },
   "private": true,
   "dependencies": {
@@ -19,11 +18,12 @@
     "@angular/common": "12.1.3",
     "@angular/compiler": "12.1.3",
     "@angular/core": "12.1.3",
-    "@angular/fire": "0.0.0",
+    "@angular/fire": "6.1.4",
     "@angular/forms": "12.1.3",
     "@angular/platform-browser": "12.1.3",
     "@angular/platform-browser-dynamic": "12.1.3",
     "@angular/router": "12.1.3",
+    "@rxjs/rx": "4.1.0",
     "firebase": "8.9.0",
     "rxjs": "7.2.0",
     "tslib": "2.3.0",

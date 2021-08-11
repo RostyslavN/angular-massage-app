@@ -1,38 +1,36 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Inject, Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, DocumentData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
-import { Booking } from '../models/booking';
+import { InitialServiceClass } from '../../shared/classes/initial-service.class';
+import { Booking } from '../models/booking.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookingsService {
-  private collectionName: string = 'bookings';
-
-  constructor(private store: AngularFirestore) { }
-
-  private collection(): AngularFirestoreCollection {
-    return this.store.collection(this.collectionName);
+export class BookingsService extends InitialServiceClass {
+  constructor(store: AngularFirestore, @Inject(String) collectionName: string) {
+    super(store, collectionName);
+    this.collectionName = 'booking';
   }
 
-  // add function return type
-  getBookings() {
-    return this.collection().valueChanges({ idFiled: 'id' });
+  getAll(): Observable<DocumentData> {
+    return this.collection.valueChanges({ idFiled: 'id' });
   }
 
-  createBooking(booking: Booking): void {
-    this.store.firestore.runTransaction(() => {
+  create(booking: Omit<Booking, 'id'>) {
+    return this.store.firestore.runTransaction(() => {
       return Promise.all([
-        this.collection().add(booking)
+        this.collection.add(booking)
       ]);
     });
   }
 
-  updateBooking(id: string, newBooking: Booking): void {
-    this.collection().doc(id).update(newBooking);
+  update(id: string, newBooking: Booking) {
+    return this.collection.doc(id).update(newBooking);
   }
 
-  deleteBooking(id: string): void {
-    this.collection().doc(id).delete();
+  delete(id: string) {
+    return this.collection.doc(id).delete();
   }
 }
