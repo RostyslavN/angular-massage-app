@@ -21,4 +21,6 @@ import { CreateBookingComponent } from './components/create-booking/create-booki
     BookingsRoutingModule
   ]
 })
-export class BookingsModule { }
+export class BookingsModule {
+  public collectionName: string = 'bookings';
+}
