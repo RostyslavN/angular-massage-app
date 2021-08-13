@@ -8,7 +8,7 @@ import { DoctorsListComponent } from './components/doctors-list/doctors-list.com
 import { DisableDoctorComponent } from './components/disable-doctor/disable-doctor.component';
 import { UpdateDoctorComponent } from './components/update-doctor/update-doctor.component';
 import { DoctorsFormComponent } from './components/doctors-form/doctors-form.component';
-import { FindDoctorComponent } from './components/find-doctor/find-doctor.component';
+import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
 
 
 @NgModule({
@@ -19,14 +19,11 @@ import { FindDoctorComponent } from './components/find-doctor/find-doctor.compon
     DisableDoctorComponent,
     UpdateDoctorComponent,
     DoctorsFormComponent,
-    FindDoctorComponent
+    DoctorDetailsComponent
   ],
   imports: [
     CommonModule,
     DoctorsRoutingModule
   ]
 })
-export class DoctorsModule {
-  public availableTimes: Array<Date> = [];
-
-}
+export class DoctorsModule { }

@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IllnessesRoutingModule } from './illnesses-routing.module';
-import { RemoveIllnessComponent } from './components/remove-illness/remove-illness.component';
 import { UpdateIllnessComponent } from './components/update-illness/update-illness.component';
-import { FindIllnessComponent } from './components/find-illness/find-illness.component';
+import { IllnessDetailsComponent } from './components/illness-details/illness-details.component';
+import { DeleteIllnessComponent } from './components/delete-illness/delete-illness.component';
 
 
 @NgModule({
   declarations: [
-    RemoveIllnessComponent,
     UpdateIllnessComponent,
-    FindIllnessComponent
+    IllnessDetailsComponent,
+    DeleteIllnessComponent
   ],
   imports: [
     CommonModule,

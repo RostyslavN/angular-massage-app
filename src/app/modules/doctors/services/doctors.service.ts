@@ -1,38 +1,20 @@
-import { Inject, Injectable } from '@angular/core';
-import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 
 import { InitialServiceClass } from '../../shared/classes/initial-service.class';
-import { DoctorData } from '../models/doctorData.model';
-import { DoctorProfile } from '../models/doctorProfile.model';
+import { Doctor } from '../models/doctor.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DoctorsService extends InitialServiceClass {
+export class DoctorsService extends InitialServiceClass<Doctor> {
+  collectionName: string = 'doctors';
 
-  constructor(store: AngularFirestore, @Inject(String) collectionName: string) {
-    super(store, collectionName);
-    this.collectionName = 'doctors';
+  constructor(store: AngularFirestore) {
+    super(store);
   }
 
-  add(doctorData: Omit<DoctorData, 'id'|'isEmployee'>) {
-    return this.store.firestore.runTransaction(() => {
-      return Promise.all([
-        this.collection.add(doctorData)
-      ]);
-    });
-  }
-
-  getAll(): Observable<DocumentData> {
-    return this.collection.valueChanges({ idFiled: 'id' });
-  }
-
-  disable(id: string) {
+  disable(id: string): Promise<void> {
     return this.collection.doc(id).update({'isEmployee': false});
-  }
-
-  update(id: string, newData: DoctorProfile) {
-    return this.collection.doc(id).update(newData);
   }
 }

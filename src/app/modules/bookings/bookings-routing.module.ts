@@ -5,7 +5,7 @@ import { CreateBookingComponent } from './components/create-booking/create-booki
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { UpdateBookingComponent } from './components/update-booking/update-booking.component';
 import { DeleteBookingComponent } from './components/delete-booking/delete-booking.component';
-import { FindBookingComponent } from './components/find-booking/find-booking.component';
+import { BookingDetailsComponent } from './components/booking-details/booking-details.component';
 
 const routes: Routes = [
   { path: 'create', component: CreateBookingComponent },
@@ -22,8 +22,8 @@ const routes: Routes = [
         component: DeleteBookingComponent
       },
       {
-        path: 'find',
-        component: FindBookingComponent
+        path: 'details',
+        component: BookingDetailsComponent
       }
     ]
   },

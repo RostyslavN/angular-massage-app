@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RemoveIllnessComponent } from './components/remove-illness/remove-illness.component';
+import { DeleteIllnessComponent } from './components/delete-illness/delete-illness.component';
+import { IllnessDetailsComponent } from './components/illness-details/illness-details.component';
 import { UpdateIllnessComponent } from './components/update-illness/update-illness.component';
-import { FindIllnessComponent } from './components/find-illness/find-illness.component';
 
 const routes: Routes = [
   {
     path: ':id',
      children: [
        {
-         path: 'remove',
-         component: RemoveIllnessComponent
+         path: 'delete',
+         component: DeleteIllnessComponent
        },
        {
          path: 'update',
          component: UpdateIllnessComponent
        },
        {
-         path: 'find',
-         component: FindIllnessComponent
+         path: 'details',
+         component: IllnessDetailsComponent
        }
      ]
   }

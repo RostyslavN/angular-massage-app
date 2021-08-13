@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HospitalData } from '../../models/hospitalData.model';
+import { HospitalsService } from '../../services/hospitals.service';
+
 @Component({
   selector: 'app-add-hospital',
   templateUrl: './add-hospital.component.html',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddHospitalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private hospitalsService: HospitalsService) { }
 
   ngOnInit(): void {
   }
 
+  async addHospital(data: HospitalData): Promise<void> {
+    return this.hospitalsService.add(data)
+      .then(docRef => console.log(`Hospital was succesfully added ${docRef.id}`))
+      .catch(error => console.error('Error adding hospital: ', error));
+  }
 }

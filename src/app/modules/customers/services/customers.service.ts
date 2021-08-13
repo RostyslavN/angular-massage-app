@@ -1,32 +1,20 @@
-import { Inject, Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';;
 
 import { InitialServiceClass } from '../../shared/classes/initial-service.class';
-import { CustomerProfile } from '../models/customerProfile.model';
+import { Customer } from '../models/customer.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomersService extends InitialServiceClass {
+export class CustomersService extends InitialServiceClass<Customer> {
+  collectionName: string = 'customers';
 
-  constructor(store: AngularFirestore, @Inject(String) collectionName: string ) {
-    super(store, collectionName);
-    this.collectionName = 'customers';
+  constructor(store: AngularFirestore) {
+    super(store);
   }
 
-  getAll(): Observable<DocumentData[]> {
-    return this.collection.valueChanges({ idFiled: 'id' });
-  }
-
-  // getCustomerAvailableTime(id: string) {
-  //   return this.collection().doc(id).get('availableTime');
-  // }
-  update(id: string, newDate: CustomerProfile) {
-    return this.collection.doc(id).update(newDate);
-  }
-
-  disable(id: string) {
+  disable(id: string): Promise<void> {
     return this.collection.doc(id).update({'isClient': false});
   }
 }

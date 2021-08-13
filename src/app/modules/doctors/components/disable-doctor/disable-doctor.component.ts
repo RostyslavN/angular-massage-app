@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Parameters } from 'src/app/modules/shared/models/parameters.model';
+
+import { IdService } from 'src/app/modules/shared/services/ids.service';
+import { DoctorsService } from '../../services/doctors.service';
 
 @Component({
   selector: 'app-disable-doctor',
@@ -6,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./disable-doctor.component.scss']
 })
 export class DisableDoctorComponent implements OnInit {
+  private params: Parameters = { currentId: '' };
 
-  constructor() { }
+  constructor(private doctorsService: DoctorsService, private idService: IdService) { }
 
   ngOnInit(): void {
+    this.idService.get(this.params);
+    this.disableDoctor(this.params.currentId)
   }
 
+  async disableDoctor(id: string): Promise<void> {
+    return this.doctorsService.disable(id)
+      .then(() => console.log('Doctor was succesfully disabled'))
+      .catch(error => console.error('Error disabling doctor: ', error));
+  }
 }

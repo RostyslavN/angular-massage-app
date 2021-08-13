@@ -12,6 +12,7 @@ import { BookingsModule } from './modules/bookings/bookings.module';
 import { IllnessesModule } from './modules/illnesses/illnesses.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { environment } from 'src/environments/environment';
     IllnessesModule,
     AuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddHospitalComponent } from './components/add-hospital/add-hospital.component';
 import { DisableHospitalComponent } from './components/disable-hospital/disable-hospital.component';
-import { FindHospitalComponent } from './components/find-hospital/find-hospital.component';
+import { HospitalDetailsComponent } from './components/hospital-details/hospital-details.component';
 
 const routes: Routes = [
   { path: 'register', component: AddHospitalComponent },
@@ -15,8 +15,8 @@ const routes: Routes = [
         component: DisableHospitalComponent
       },
       {
-        path: 'find',
-        component: FindHospitalComponent
+        path: 'details',
+        component: HospitalDetailsComponent
       }
     ]
   }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { IdService } from 'src/app/modules/shared/services/ids.service';
+import { Doctor } from '../../models/doctor.model';
+import { DoctorsService } from '../../services/doctors.service';
+
 @Component({
   selector: 'app-update-doctor',
   templateUrl: './update-doctor.component.html',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateDoctorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private doctorsService: DoctorsService, private idService: IdService) { }
 
   ngOnInit(): void {
   }
 
+  async updateDoctor(id: string, entity: Doctor): Promise<void> {
+    return this.doctorsService.update(id, entity)
+      .then(() => console.log('Doctor was succesfully updated'))
+      .catch(error => console.error('Error updating doctor: ', error));
+  }
 }

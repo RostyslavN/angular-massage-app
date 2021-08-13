@@ -7,7 +7,7 @@ import { BookingFormComponent } from './components/booking-form/booking-form.com
 import { DeleteBookingComponent } from './components/delete-booking/delete-booking.component';
 import { UpdateBookingComponent } from './components/update-booking/update-booking.component';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
-import { FindBookingComponent } from './components/find-booking/find-booking.component';
+import { BookingDetailsComponent } from './components/booking-details/booking-details.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +16,11 @@ import { FindBookingComponent } from './components/find-booking/find-booking.com
     DeleteBookingComponent,
     UpdateBookingComponent,
     CreateBookingComponent,
-    FindBookingComponent,
+    BookingDetailsComponent,
   ],
   imports: [
     CommonModule,
     BookingsRoutingModule
   ]
 })
-export class BookingsModule {
-  public collectionName: string = 'bookings';
-}
+export class BookingsModule { }
