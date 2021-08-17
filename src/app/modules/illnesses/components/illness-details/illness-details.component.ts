@@ -22,8 +22,8 @@ export class IllnessDetailsComponent implements OnInit {
     this.getIllnessDetails(this.params.currentId);
   }
 
-  getIllnessDetails(id: string): Subscription {
-    return this.illnessService.getById(id).subscribe({
+  getIllnessDetails(id: string): void {
+    this.illnessService.getById(id).subscribe({
       next: illness => {
         this.illnessDetails = illness;
         console.log('Illness details were successfully received');

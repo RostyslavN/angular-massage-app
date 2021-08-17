@@ -1,7 +1,6 @@
-import { User } from "../../auth/models/user.model";
-import { Person } from "../../shared/models/person.model";
+import { Person } from '../../shared/models/person.model';
 
-export interface Customer extends Person, User {
+export interface Customer extends Person {
   illness: string;
   isClient: boolean;
   availableTime: Date[];

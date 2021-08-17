@@ -24,7 +24,7 @@ export class BookingDetailsComponent implements OnInit {
     this.getBookingDetails(this.params.currentId);
   }
 
-  getBookingDetails(id: string) {
+  getBookingDetails(id: string): void {
     this.bookingsService.getById(id).subscribe({
       next: booking => {
         this.bookingDetails = booking;

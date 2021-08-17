@@ -20,8 +20,8 @@ export class DisableCustomerComponent implements OnInit {
     this.disableCustomer(this.params.currentId);
   }
 
-  async disableCustomer(id: string): Promise<void> {
-    return this.customersService.disable(id)
+  disableCustomer(id: string): void {
+    this.customersService.disable(id)
       .then(() => console.log('Customer was succesfully disabled'))
       .catch(error => console.error('Error disabling customer: ', error));
   }

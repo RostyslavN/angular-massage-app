@@ -16,8 +16,8 @@ export class AddDoctorComponent implements OnInit {
     // this.addDoctor( {} );
   }
 
-  async addDoctor(data: Doctor): Promise<void> {
-    return this.doctorsService.add(data)
+  addDoctor(data: Doctor): void {
+    this.doctorsService.add(data)
       .then(docRef => console.log(`Doctor was succesfully added ${docRef.id}`))
       .catch(error => console.error('Error adding doctor: ', error));
   }

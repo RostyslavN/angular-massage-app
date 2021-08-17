@@ -19,8 +19,8 @@ export class DeleteBookingComponent implements OnInit {
     this.deleteBooking(this.params.currentId);
   }
 
-  async deleteBooking(id: string): Promise<void> {
-    return this.bookingsService.delete(id)
+  deleteBooking(id: string): void {
+    this.bookingsService.delete(id)
       .then(() => console.log('Booking successfully deleted'))
       .catch(error => console.error('Error deleting booking: ', error));
   }

@@ -20,8 +20,8 @@ export class UpdateBookingComponent implements OnInit {
     // update
   }
 
-  async updateBooking(id: string, entity: Booking): Promise<void> {
-    return this.bookingsService.update(id, entity)
+  updateBooking(id: string, entity: Booking): void {
+    this.bookingsService.update(id, entity)
       .then(() => console.log('Booking was succesfully updated'))
       .catch(error => console.error('Error updating booking: ', error));
   }

@@ -16,8 +16,8 @@ export class UpdateDoctorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async updateDoctor(id: string, entity: Doctor): Promise<void> {
-    return this.doctorsService.update(id, entity)
+  updateDoctor(id: string, entity: Doctor): void {
+    this.doctorsService.update(id, entity)
       .then(() => console.log('Doctor was succesfully updated'))
       .catch(error => console.error('Error updating doctor: ', error));
   }

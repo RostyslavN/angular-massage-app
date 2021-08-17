@@ -29,8 +29,8 @@ export class CustomerDetailsComponent implements OnInit {
     this.getCustomerDetails(this.params.currentId);
   }
 
-  getCustomerDetails(id: string): Subscription {
-    return this.customersService.getById(id).subscribe({
+  getCustomerDetails(id: string): void{
+    this.customersService.getById(id).subscribe({
       next: customer => {
         this.customerDetails = customer;
         console.log('Booking details were successfully received');

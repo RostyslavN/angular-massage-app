@@ -19,8 +19,8 @@ export class DisableDoctorComponent implements OnInit {
     this.disableDoctor(this.params.currentId)
   }
 
-  async disableDoctor(id: string): Promise<void> {
-    return this.doctorsService.disable(id)
+  disableDoctor(id: string): void {
+    this.doctorsService.disable(id)
       .then(() => console.log('Doctor was succesfully disabled'))
       .catch(error => console.error('Error disabling doctor: ', error));
   }

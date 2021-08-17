@@ -15,8 +15,8 @@ export class AddHospitalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async addHospital(data: HospitalData): Promise<void> {
-    return this.hospitalsService.add(data)
+  addHospital(data: HospitalData): void {
+    this.hospitalsService.add(data)
       .then(docRef => console.log(`Hospital was succesfully added ${docRef.id}`))
       .catch(error => console.error('Error adding hospital: ', error));
   }

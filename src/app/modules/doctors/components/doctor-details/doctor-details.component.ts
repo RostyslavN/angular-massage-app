@@ -30,8 +30,8 @@ export class DoctorDetailsComponent implements OnInit {
     this.getDoctorDetails(this.params.currentId);
   }
 
-  getDoctorDetails(id: string): Subscription {
-    return this.doctorsService.getById(id).subscribe({
+  getDoctorDetails(id: string): void {
+    this.doctorsService.getById(id).subscribe({
       next: customer => {
         this.doctorDetails = customer;
         console.log('Doctor details were successfully received');

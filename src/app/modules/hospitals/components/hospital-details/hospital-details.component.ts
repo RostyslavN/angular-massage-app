@@ -22,8 +22,8 @@ export class HospitalDetailsComponent implements OnInit {
     this.getHospitalDetails(this.params.currentId);
   }
 
-  getHospitalDetails(id: string): Subscription {
-    return this.hospitalsService.getById(id).subscribe({
+  getHospitalDetails(id: string): void {
+    this.hospitalsService.getById(id).subscribe({
       next: hospital => {
         this.hospitalDetails = hospital;
         console.log('Hospital details were successfully received');

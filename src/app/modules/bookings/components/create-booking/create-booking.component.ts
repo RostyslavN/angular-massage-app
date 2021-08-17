@@ -21,7 +21,7 @@ export class CreateBookingComponent implements OnInit {
     // }, 2000);
   }
 
-  async createBooking(booking: Booking) {
+  createBooking(booking: Booking): void {
     this.bookingsService.create(booking)
       .then(docRef => console.log(`Booking was succesfully created ${docRef.id}`))
       .catch(error => console.error('Error creating booking: ', error));

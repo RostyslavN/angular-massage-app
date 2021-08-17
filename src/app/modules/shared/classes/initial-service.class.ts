@@ -13,7 +13,7 @@ export class InitialServiceClass<T> implements Service {
   }
 
   getAll(): Observable<T[]> {
-    return this.collection.valueChanges({ idFiled: 'id' });
+    return this.collection.valueChanges({ isField: 'id' });
   }
 
   delete(id: string): Promise<void> {

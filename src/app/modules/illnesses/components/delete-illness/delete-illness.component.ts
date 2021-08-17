@@ -19,8 +19,8 @@ export class DeleteIllnessComponent implements OnInit {
     this.deleteIllness(this.params.currentId);
   }
 
-  async deleteIllness(id: string): Promise<void> {
-    return this.illnessService.delete(id)
+  deleteIllness(id: string): void {
+    this.illnessService.delete(id)
       .then(() => console.log('Illness successfully deleted'))
       .catch(error => console.error('Error deleting illness: ', error));
   }

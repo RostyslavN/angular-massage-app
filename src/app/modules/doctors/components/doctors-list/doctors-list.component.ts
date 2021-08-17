@@ -18,8 +18,8 @@ export class DoctorsListComponent implements OnInit {
     this.getAllDoctors();
   }
 
-  getAllDoctors(): Subscription {
-    return this.doctorsService.getAll().subscribe({
+  getAllDoctors(): void {
+    this.doctorsService.getAll().subscribe({
       next: (doctors: Doctor[]) => {
         this.allDoctors = doctors;
         console.log('Doctors list were successfully received');

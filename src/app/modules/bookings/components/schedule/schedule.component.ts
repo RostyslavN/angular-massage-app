@@ -21,8 +21,8 @@ export class ScheduleComponent implements OnInit {
     // }, 2000);
   }
 
-  getAllBookings(): Subscription {
-    return this.bookingsService.getAll().subscribe({
+  getAllBookings(): void {
+    this.bookingsService.getAll().subscribe({
       next: (bookings: Booking[]) => {
         this.allBookings = bookings;
         console.log('Bookings were successfully received');
