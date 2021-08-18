@@ -36,18 +36,17 @@ export class AuthService {
     );
   }
 
-  async googleSignIn() {
+  async googleSignIn(): Promise<void> {
     const provider: GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
       prompt: 'select_account'
     });
-    firebase.auth()
+    return firebase.auth()
       .signInWithPopup(provider)
       .then(result => {
         console.log('User is succesfully signed in');
         localStorage.setItem('token', JSON.stringify((<any>result).credential.idToken));
         localStorage.setItem('user', JSON.stringify(result.user));
-        this.router.navigate(['/bookings/create']);
       }).catch(error => {
         console.error('Error during sign-in: ', error);
       });
@@ -64,9 +63,9 @@ export class AuthService {
     return this.router.navigate(['/']);
   }
 
-  private updateUserData({ uid }: User): Promise<void> {
-    const userRef: AngularFirestoreDocument<User> = this.store.doc(`users/${uid}`);
-    const data: User = { uid };
-    return userRef.set(data, { merge: true });
-  }
+  // private updateUserData({ uid }: User): Promise<void> {
+  //   const userRef: AngularFirestoreDocument<User> = this.store.doc(`users/${uid}`);
+  //   const data: User = { uid };
+  //   return userRef.set(data, { merge: true });
+  // }
 }

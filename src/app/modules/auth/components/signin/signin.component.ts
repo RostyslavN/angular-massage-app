@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -9,13 +10,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  signin() {
-    this.authService.googleSignIn();
+  signin(): void {
+    this.authService.googleSignIn()
+      .then(() => this.router.navigate(['/bookings/schedule']));
   }
-
 }

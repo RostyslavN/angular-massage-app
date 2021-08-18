@@ -1,0 +1,38 @@
+button {
+  padding: 13px 25px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  min-width: 120px;
+  font-family: $font-stack;
+  font-weight: 500;
+
+  &.primary {
+    background-color: $cornflower;
+    color: $white;
+    box-shadow: 1px 3px 10px 0px #adaffc;
+  }
+
+  &.default {
+    background-color: $white;
+    border: 2px solid $athens-gray;
+  }
+
+  &.delete {
+    background-color: $red;
+    color: $white;
+    box-shadow: 1px 3px 10px 0px #fbd9da;
+  }
+
+  &.info {
+    background-color: #ecedfd;
+    color: $cornflower;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-family: $font-stack;
+  color: $cornflower;
+  font-weight: 500;
+}

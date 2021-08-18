@@ -1,0 +1,99 @@
+input, textarea {
+  font-family: $font-stack;
+  font-weight: 500;
+  border: 2px solid $athens-gray;
+  color: $midnight;
+}
+
+input {
+  &[type="text"] {
+    border-radius: 7px;
+    padding: 15px 20px;
+  }
+
+  &[type="checkbox"] {
+    display: none;
+
+    & + label {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+
+      &::before {
+        content:'';
+        border: 2px solid $athens-gray;
+        border-radius: 10px;
+        padding: 12px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+    }
+
+    &:checked + label:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 4px;
+      left: 12px;
+      width: 3px;
+      height: 8px;
+      border: solid $white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    &:checked + label:before {
+      background-color: $cornflower;
+      border-color: transparent;
+    }
+  }
+
+  &[type="radio"] {
+    display: none;
+    & + label {
+      position: relative;
+      padding-left: 30px;
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: middle;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 17px;
+        height: 17px;
+        border: 2px solid $athens-gray;
+        border-radius: 100%;
+        background: #fff;
+      }
+
+      &::after {
+        content: '';
+        width: 7px;
+        height: 7px;
+        background: $cornflower;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        border-radius: 100%;
+        transition: all 0.2s ease;
+      }
+    }
+
+    &:checked + label::before {
+      border-color: $cornflower;
+    }
+
+    &:not(:checked) + label {
+      color: $athens-gray;
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
+}

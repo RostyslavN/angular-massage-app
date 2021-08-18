@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 import { Booking } from '../../models/booking.model';
 import { BookingsService } from '../../services/bookings.service';
@@ -16,9 +15,6 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllBookings();
-    // setTimeout(() => {
-    //   console.log(this.allBookings)
-    // }, 2000);
   }
 
   getAllBookings(): void {
