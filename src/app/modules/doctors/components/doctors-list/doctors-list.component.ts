@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { first } from 'rxjs';
 
 import { Doctor } from '../../models/doctor.model';
 import { DoctorsService } from '../../services/doctors.service';
@@ -19,7 +19,7 @@ export class DoctorsListComponent implements OnInit {
   }
 
   getAllDoctors(): void {
-    this.doctorsService.getAll().subscribe({
+    this.doctorsService.getAll().pipe(first()).subscribe({
       next: (doctors: Doctor[]) => {
         this.allDoctors = doctors;
         console.log('Doctors list were successfully received');

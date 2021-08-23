@@ -6,6 +6,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { UpdateBookingComponent } from './components/update-booking/update-booking.component';
 import { DeleteBookingComponent } from './components/delete-booking/delete-booking.component';
 import { BookingDetailsComponent } from './components/booking-details/booking-details.component';
+import { BookingFormComponent } from './components/booking-form/booking-form.component';
 
 const routes: Routes = [
   { path: 'create', component: CreateBookingComponent },

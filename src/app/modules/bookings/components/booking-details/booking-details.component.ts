@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs';
 import { Parameters } from 'src/app/modules/shared/models/parameters.model';
 import { IdService } from 'src/app/modules/shared/services/ids.service';
 
@@ -12,10 +13,7 @@ import { BookingsService } from '../../services/bookings.service';
 })
 export class BookingDetailsComponent implements OnInit {
   private params: Parameters = { currentId: '' };
-  bookingDetails: Booking | undefined = {
-    location: '',
-    time: new Date()
-  };
+  bookingDetails: Booking | undefined;
 
   constructor(private bookingsService: BookingsService, private idService: IdService) { }
 
@@ -25,7 +23,7 @@ export class BookingDetailsComponent implements OnInit {
   }
 
   getBookingDetails(id: string): void {
-    this.bookingsService.getById(id).subscribe({
+    this.bookingsService.getById(id).pipe(first()).subscribe({
       next: booking => {
         this.bookingDetails = booking;
         console.log('Booking details were successfully received');

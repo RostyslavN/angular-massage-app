@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { first } from 'rxjs';
 
 import { Parameters } from 'src/app/modules/shared/models/parameters.model';
 import { IdService } from 'src/app/modules/shared/services/ids.service';
@@ -13,7 +13,7 @@ import { HospitalsService } from '../../services/hospitals.service';
 })
 export class HospitalDetailsComponent implements OnInit {
   private params: Parameters = { currentId: '' };
-  private hospitalDetails: HospitalData | undefined = { location: '', isActive: true };
+  private hospitalDetails: HospitalData | undefined;
 
   constructor(private hospitalsService: HospitalsService, private idService: IdService) { }
 
@@ -23,7 +23,7 @@ export class HospitalDetailsComponent implements OnInit {
   }
 
   getHospitalDetails(id: string): void {
-    this.hospitalsService.getById(id).subscribe({
+    this.hospitalsService.getById(id).pipe(first()).subscribe({
       next: hospital => {
         this.hospitalDetails = hospital;
         console.log('Hospital details were successfully received');

@@ -1,0 +1,43 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 500px;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0px grey;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding;
+  border-radius: 10px 10px 0 0;
+
+  &.dark {
+    background-color: $midnight;
+    color: $white;
+  }
+
+  &.light {
+    color: $midnight;
+    border-bottom: 2px solid $athens-gray;
+  }
+}
+
+section {
+  padding: $padding;
+}
+
+footer {
+  background-color: #fafbff;
+  padding: $padding;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid $athens-gray;
+}

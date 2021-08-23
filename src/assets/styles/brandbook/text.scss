@@ -3,9 +3,15 @@
 .body-text,
 .description {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
+  margin-bottom: 0;
 }
 
 .description {
   color: #a3a4ba;
+}
+
+.error-message {
+  color: $red;
+  font-size: 12px;
 }

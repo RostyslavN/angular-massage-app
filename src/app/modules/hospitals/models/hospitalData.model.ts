@@ -1,4 +1,7 @@
 export interface HospitalData {
-  location: string;
+  name: string;
+  address: string;
   isActive: boolean;
+  // customers: string[];
+  // doctors: string[];
 }

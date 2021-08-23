@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { first } from 'rxjs';
 import { Parameters } from 'src/app/modules/shared/models/parameters.model';
 
 import { IdService } from 'src/app/modules/shared/services/ids.service';
@@ -23,7 +23,7 @@ export class IllnessDetailsComponent implements OnInit {
   }
 
   getIllnessDetails(id: string): void {
-    this.illnessService.getById(id).subscribe({
+    this.illnessService.getById(id).pipe(first()).subscribe({
       next: illness => {
         this.illnessDetails = illness;
         console.log('Illness details were successfully received');

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HospitalsRoutingModule } from './hospitals-routing.module';
 import { DisableHospitalComponent } from './components/disable-hospital/disable-hospital.component';
@@ -15,7 +17,9 @@ import { HospitalDetailsComponent } from './components/hospital-details/hospital
   ],
   imports: [
     CommonModule,
-    HospitalsRoutingModule
+    HospitalsRoutingModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
   ]
 })
 export class HospitalsModule { }

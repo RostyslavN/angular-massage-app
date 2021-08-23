@@ -6,7 +6,7 @@ import { DisableHospitalComponent } from './components/disable-hospital/disable-
 import { HospitalDetailsComponent } from './components/hospital-details/hospital-details.component';
 
 const routes: Routes = [
-  { path: 'register', component: AddHospitalComponent },
+  { path: 'add', component: AddHospitalComponent },
   {
     path: ':id',
     children: [

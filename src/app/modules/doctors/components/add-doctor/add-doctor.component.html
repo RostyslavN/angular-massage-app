@@ -1,1 +1,56 @@
-<p>add-doctor works!</p>
+<div class="container">
+  <form [formGroup]="doctorForm" (ngSubmit)="addDoctor()">
+    <header class="dark">
+      <h3>Add doctor</h3>
+      <button class="close" (click)="closeModal()">
+        <fa-icon [icon]="faTimesIcon"></fa-icon>
+      </button>
+    </header>
+    <section>
+      <div>
+        <p class="body-text">Fullname</p>
+        <div class="field">
+          <input type="text" formControlName="fullName" placeholder="Enter doctor's fullname..">
+          <span *ngIf="fullName?.invalid && fullName?.dirty" class="error-message">Enter doctor's fullname</span>
+        </div>
+      </div>
+      <div>
+        <p class="body-text">Age</p>
+        <input type="text" formControlName="age" placeholder="Enter doctor's age..">
+      </div>
+      <div formGroupName="experience">
+        <p class="body-text">Experience</p>
+        <div class="field-wrapper">
+          <div class="field">
+            <input type="number" formControlName="months" placeholder="Enter doctor's experience in months..">
+            <span *ngIf="experienceMonths?.invalid && experienceMonths?.dirty" class="error-message">Enter doctor's experience in months</span>
+          </div>
+          <div class="field">
+            <input type="text" formControlName="specilisation" placeholder="Enter doctor's specilisation..">
+            <span *ngIf="experienceSpecilisation?.invalid && experienceSpecilisation?.dirty" class="error-message">Enter doctor's specilisation</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="body-text">Skills</p>
+        <div class="field">
+          <input type="text" formControlName="skills" placeholder="skill1 skill2 ..">
+          <span *ngIf="skills?.invalid && skills?.dirty" class="error-message">Enter doctor's skills</span>
+        </div>
+      </div>
+      <div>
+        <p class="body-text">Hospital</p>
+        <div class="field">
+          <input type="text" formControlName="hospitalId" placeholder="Choose hospital doctor's working in..">
+          <span *ngIf="hospitalId?.invalid && hospitalId?.dirty" class="error-message">Doctor's hospital is required</span>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="field-wrapper">
+        <button class="default" (click)="closeModal()">Cancel</button>
+        <button class="primary" type="submit">Create</button>
+      </div>
+    </footer>
+  </form>
+</div>

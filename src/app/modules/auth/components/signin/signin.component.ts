@@ -17,6 +17,10 @@ export class SigninComponent implements OnInit {
 
   signin(): void {
     this.authService.googleSignIn()
-      .then(() => this.router.navigate(['/bookings/schedule']));
+      .then(() => {
+        // this.authService.isNewUser
+          // ? this.router.navigate([`/customers/${}profile`])  add customer uid
+          // : this.router.navigate(['/bookings/schedule']);
+      });
   }
 }

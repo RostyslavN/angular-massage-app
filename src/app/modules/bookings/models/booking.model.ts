@@ -1,5 +1,8 @@
 export interface Booking {
-
-  location: string;
-  time: Date | number;
+  name: string;
+  customer: string;
+  doctor: string;
+  // time: Date | number;
+  time: any;
+  description?: string;
 }
