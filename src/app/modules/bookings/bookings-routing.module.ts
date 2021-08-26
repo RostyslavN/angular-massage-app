@@ -10,7 +10,7 @@ import { BookingFormComponent } from './components/booking-form/booking-form.com
 
 const routes: Routes = [
   { path: 'create', component: CreateBookingComponent },
-  { path: 'schedule', component: ScheduleComponent },
+  { path: 'schedule', component: ScheduleComponent},
   {
     path: ':id',
     children: [

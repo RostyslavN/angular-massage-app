@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { BookingsRoutingModule } from './bookings-routing.module';
 import { ScheduleComponent } from './components/schedule/schedule.component';
@@ -10,8 +11,8 @@ import { DeleteBookingComponent } from './components/delete-booking/delete-booki
 import { UpdateBookingComponent } from './components/update-booking/update-booking.component';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
 import { BookingDetailsComponent } from './components/booking-details/booking-details.component';
-import { CustomCalendarModule } from '../custom-calendar/custom-calendar.module';
-import { MapBookingToolEventPipe } from './pipes/map-booking-tool-event.pipe';
+import { MapBookingToCalendarEventPipe } from './pipes/map-booking-tool-event.pipe';
+import { CalendarModule } from '../calendar/calendar.module';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { MapBookingToolEventPipe } from './pipes/map-booking-tool-event.pipe';
     UpdateBookingComponent,
     CreateBookingComponent,
     BookingDetailsComponent,
-    MapBookingToolEventPipe,
+    MapBookingToCalendarEventPipe,
   ],
   imports: [
     CommonModule,
     BookingsRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    CustomCalendarModule
+    CalendarModule,
+    MatAutocompleteModule
   ]
 })
 export class BookingsModule { }

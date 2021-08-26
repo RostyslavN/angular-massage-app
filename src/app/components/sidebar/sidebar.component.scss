@@ -1,0 +1,11 @@
+@import 'brandbook';
+
+:host {
+  min-width: 150px;
+  background-color: $white;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

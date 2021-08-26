@@ -38,7 +38,7 @@ export class AddHospitalComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.location.back();
+    // this.location.back();
   }
 
   get name(): AbstractControl | null {

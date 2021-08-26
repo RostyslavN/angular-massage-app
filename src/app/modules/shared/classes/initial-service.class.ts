@@ -1,5 +1,5 @@
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { Service } from '../models/service.model';
 
@@ -12,8 +12,13 @@ export class InitialServiceClass<T> implements Service {
     return this.store.collection<T>(this.collectionName);
   }
 
+  mapEntity(entity: T): T {
+    return entity;
+  }
+
   getAll(): Observable<T[]> {
-    return this.collection.valueChanges({ isField: 'id' });
+    return this.collection.valueChanges({ idField: 'id' })
+      .pipe(map(entities => entities.map(this.mapEntity)));
   }
 
   delete(id: string): Promise<void> {
@@ -21,7 +26,7 @@ export class InitialServiceClass<T> implements Service {
   }
 
   getById(id: string): Observable<T | undefined> {
-    return this.collection.doc(id).valueChanges({ isField: 'id' });
+    return this.collection.doc(id).valueChanges({ idField: 'id' });
   }
 
   create(entity: T): Promise<DocumentReference<T>> {

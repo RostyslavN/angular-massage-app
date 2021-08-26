@@ -25,13 +25,23 @@ export class AuthService {
     private jwtHelperService: JwtHelperService
   ) {
     this.user$ = this.defineUser<User>();
+    fireAuth.onAuthStateChanged(user => {
+      if (user) {
+        console.log()
+      } else {
+
+      }
+    });
   }
 
   private defineUser<T>(): Observable<T | null | undefined> {
     return this.fireAuth.authState.pipe(
       switchMap(user => {
-        if (user) return this.store.doc<T>(`users/${user.uid}`).valueChanges({ isField: 'id' })
-        else return of(null);
+        if (user) {
+          return this.store.doc<T>(`users/${user.uid}`).valueChanges({ idField: 'id' })
+        } else {
+          return of(null);
+        }
       })
     );
   }
@@ -39,18 +49,18 @@ export class AuthService {
   async googleSignIn(): Promise<void> {
     const provider: GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
-      prompt: 'select_account'
+
     });
     return firebase.auth()
       .signInWithPopup(provider)
-      .then(result => {
-        if (result && result.user) {
+      .then(credential => {
+        if (credential && credential.user) {
           console.log('User is succesfully signed in');
-          localStorage.setItem('token', JSON.stringify((<any>result).credential.idToken));
+          localStorage.setItem('token', JSON.stringify((<any>credential).credential.idToken));
           const userDataToStore = Object.assign(
             {},
-            result.additionalUserInfo,
-            { uid: result.user.uid, creatinalTime: result.user.metadata.creationTime }
+            credential.additionalUserInfo,
+            { uid: credential.user.uid, creatinalTime: credential.user.metadata.creationTime }
           );
           localStorage.setItem('user', JSON.stringify(userDataToStore));
         }

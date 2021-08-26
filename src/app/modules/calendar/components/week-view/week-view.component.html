@@ -1,0 +1,13 @@
+<app-header [(view)]="view" [(viewDate)]="viewDate"></app-header>
+<section>
+  <mwl-calendar-week-view
+    [viewDate]="viewDate"
+    [events]="events"
+    (dayHeaderClicked)="openModalWithDay($event)"
+    (hourSegmentClicked)="openModalWithDate($event)"
+    [dayStartHour]="8"
+    [dayEndHour]="19"
+
+  >
+  </mwl-calendar-week-view>
+</section>

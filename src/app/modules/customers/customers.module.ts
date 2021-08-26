@@ -9,6 +9,7 @@ import { DisableCustomerComponent } from './components/disable-customer/disable-
 import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { CustomersListComponent } from './components/customers-list/customers-list.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CreateCustomerComponent } from './components/create-customer/create-cus
     UpdateCustomerComponent,
     CustomerDetailsComponent,
     CreateCustomerComponent,
+    CustomersListComponent,
   ],
   imports: [
     CommonModule,

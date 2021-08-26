@@ -42,7 +42,7 @@ export class AddDoctorComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.location.back();
+    // this.location.back();
   }
 
   get fullName(): AbstractControl | null {

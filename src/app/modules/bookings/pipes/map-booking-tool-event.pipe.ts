@@ -6,16 +6,13 @@ import { Booking } from '../models/booking.model';
 @Pipe({
   name: 'mapBookingToCalendarEvent'
 })
-export class MapBookingToolEventPipe implements PipeTransform {
-
+export class MapBookingToCalendarEventPipe implements PipeTransform {
   transform(bookings: Booking[]): CalendarEvent[] {
     return bookings.map((booking: Booking): CalendarEvent => {
      return {
         title: booking.name,
-        start: booking.time.toDate()
+        start: new Date(booking.time)
       };
     });
   }
-
-
 }

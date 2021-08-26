@@ -4,7 +4,6 @@ button {
   border-radius: 7px;
   cursor: pointer;
   min-width: 120px;
-  font-family: $font-stack;
   font-weight: 500;
 
   &.primary {
@@ -45,6 +44,25 @@ button {
       padding: 5px 10px;
     }
   }
+
+  &.navigate {
+    background-color: $white;
+    border: 2px solid $athens-gray;
+    min-width: auto;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    color: #babaca;
+    padding: 0;
+    width: 45px;
+    height: 42px;
+
+    &.active-route {
+      background-color: $purple;
+      color: $white;
+      box-shadow: 0px 3px 8px 0px #b8bbff;
+      border-color: transparent;
+    }
+  }
 }
 
 .field-wrapper button:not(:last-child) {
@@ -62,7 +80,6 @@ button {
 
 a {
   text-decoration: none;
-  font-family: $font-stack;
   color: $cornflower;
   font-weight: 500;
 }

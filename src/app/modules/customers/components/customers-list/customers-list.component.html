@@ -1,0 +1,26 @@
+<h1>Patients</h1>
+<main>
+  <!-- <ul>
+    <li *ngFor="let customer of customers$ | async as customers">
+      {{ customer | json }}
+    </li>
+  </ul> -->
+  <table>
+    <thead>
+      <tr>
+        <th class="description">Full name</th>
+        <th class="description">Age</th>
+        <th class="description">Diagnosis</th>
+        <th class="description">Illness history</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers$ | async as customers">
+        <td class="body-text full-name">{{customer.fullName}}</td>
+        <td class="body-text">{{customer.age || '—'}}</td>
+        <td class="body-text">{{customer.diagnosis}}</td>
+        <td class="body-text">{{customer.illnessHistory}}</td>
+      </tr>
+    </tbody>
+  </table>
+</main>

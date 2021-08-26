@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="bookingForm" (ngSubmit)="createBooking()">
+  <form [formGroup]="bookingForm">
     <header class="dark">
       <h3>Create booking</h3>
       <button class="close" (click)="closeModal()">
@@ -10,24 +10,34 @@
       <div>
         <p class="body-text">Booking name</p>
         <div class="field">
-          <input type="text" formControlName="bookingName" placeholder="Enter booking name..">
-          <span *ngIf="bookingName?.invalid && bookingName?.dirty" class="error-message">Booking name is required</span>
+          <input type="text" formControlName="name" placeholder="Enter booking name..">
+          <span *ngIf="name?.invalid && name?.dirty" class="error-message">Booking name is required</span>
         </div>
       </div>
       <div>
         <p class="body-text">Patient details</p>
         <div class="field">
-          <input type="text" formControlName="customerId" placeholder="Choose a client..">
+          <input type="text" formControlName="customerId" placeholder="Choose a client.." [matAutocomplete]="autoCustomer">
           <span *ngIf="customerId?.invalid && customerId?.dirty" class="error-message">Choose a client from the
             list</span>
         </div>
+        <mat-autocomplete #autoCustomer="matAutocomplete">
+          <mat-option *ngFor="let customer of customers$ | async as customers" [value]="customer.id">
+            {{customer.fullName}}
+          </mat-option>
+        </mat-autocomplete>
       </div>
       <div>
         <p class="body-text">Doctor details</p>
         <div class="field">
-          <input type="text" formControlName="doctorId" placeholder="Choose a doctor..">
+          <input type="text" formControlName="doctorId" placeholder="Choose a doctor.." [matAutocomplete]="autoDoctor">
           <span *ngIf="doctorId?.invalid && doctorId?.dirty" class="error-message">Choose a doctor from a list</span>
         </div>
+        <mat-autocomplete #autoDoctor="matAutocomplete">
+          <mat-option *ngFor="let doctor of doctors$ | async as doctors" [value]="doctor.id">
+            {{doctor.fullName}}
+          </mat-option>
+        </mat-autocomplete>
       </div>
       <div>
         <p class="body-text">Booking details</p>
@@ -54,7 +64,7 @@
     <footer>
       <div class="field-wrapper">
         <button class="default" (click)="closeModal()">Cancel</button>
-        <button class="primary" type="submit">Create</button>
+        <button class="primary" (click)="createBooking()">Create</button>
       </div>
     </footer>
   </form>

@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 .body-text,
 .description {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 0;
+  margin-top: 15px;
 }
 
 .description {

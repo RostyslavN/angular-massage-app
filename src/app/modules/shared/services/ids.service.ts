@@ -8,9 +8,9 @@ import { Parameters } from '../models/parameters.model';
   providedIn: 'root'
 })
 export class IdService {
-  constructor(private activeRoute: ActivatedRoute) { }
+  constructor(private activedRoute: ActivatedRoute) { }
 
   get(reference: Parameters): Subscription {
-    return this.activeRoute.params.subscribe(params => reference.currentId = params.id);
+    return this.activedRoute.params.subscribe(params => reference.currentId = params.id);
   }
 }
