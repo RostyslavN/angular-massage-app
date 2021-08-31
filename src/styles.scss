@@ -16,3 +16,10 @@ body {
   margin: 0;
   color: $midnight;
 }
+
+.modal-window {
+  mat-dialog-container {
+    background: none;
+    box-shadow: none;
+  }
+}

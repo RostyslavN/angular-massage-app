@@ -1,2 +1,10 @@
-<h1>Schedule</h1>
-<app-week-view [events]="bookings | mapBookingToCalendarEvent"></app-week-view>
+<div class="field-wrapper">
+  <h1>Schedule</h1>
+  <button class="primary" (click)="openCreateBooking()">Create booking</button>
+</div>
+<app-calendar-header [(view)]="view" [(viewDate)]="viewDate"></app-calendar-header>
+<app-week-view
+  [viewDate]="viewDate"
+  [events]="bookings | mapBookingToCalendarEvent"
+  (create)="openCreateBooking($event.date)"
+  (update)="openUpdateBooking($event.event)"></app-week-view>

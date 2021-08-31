@@ -20,7 +20,7 @@ export class SigninComponent implements OnInit {
       .then(() => {
         // this.authService.isNewUser
           // ? this.router.navigate([`/customers/${}profile`])  add customer uid
-          // : this.router.navigate(['/bookings/schedule']);
+          this.router.navigate(['/bookings/schedule']);
       });
   }
 }

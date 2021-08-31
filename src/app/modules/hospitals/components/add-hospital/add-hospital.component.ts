@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { HospitalData } from '../../models/hospitalData.model';
 import { HospitalsService } from '../../services/hospitals.service';
 
 @Component({
@@ -19,7 +17,6 @@ export class AddHospitalComponent implements OnInit {
   constructor(
     private hospitalsService: HospitalsService,
     private formBuilder: FormBuilder,
-    private location: Location
   ) {
     this.hospitalForm =  this.formBuilder.group({
       name: ['', Validators.required],
@@ -38,7 +35,7 @@ export class AddHospitalComponent implements OnInit {
   }
 
   closeModal(): void {
-    // this.location.back();
+
   }
 
   get name(): AbstractControl | null {

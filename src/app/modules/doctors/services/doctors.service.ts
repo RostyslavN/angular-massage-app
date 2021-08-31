@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 import { InitialServiceClass } from '../../shared/classes/initial-service.class';
 import { Doctor } from '../models/doctor.model';

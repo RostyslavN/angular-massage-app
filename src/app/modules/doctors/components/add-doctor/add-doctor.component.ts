@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,7 +16,6 @@ export class AddDoctorComponent implements OnInit {
   constructor(
     private doctorsService: DoctorsService,
     private formBuilder: FormBuilder,
-    private location: Location
   ) {
     this.doctorForm = this.formBuilder.group({
       fullName: ['', [Validators.required, Validators.minLength(6)]],
@@ -42,7 +40,7 @@ export class AddDoctorComponent implements OnInit {
   }
 
   closeModal(): void {
-    // this.location.back();
+
   }
 
   get fullName(): AbstractControl | null {

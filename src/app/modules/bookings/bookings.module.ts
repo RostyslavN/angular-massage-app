@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { BookingsRoutingModule } from './bookings-routing.module';
 import { ScheduleComponent } from './components/schedule/schedule.component';
@@ -31,7 +32,8 @@ import { CalendarModule } from '../calendar/calendar.module';
     ReactiveFormsModule,
     FontAwesomeModule,
     CalendarModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule
   ]
 })
 export class BookingsModule { }

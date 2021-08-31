@@ -3,7 +3,7 @@ import { first } from 'rxjs';
 import { Parameters } from 'src/app/modules/shared/models/parameters.model';
 import { IdService } from 'src/app/modules/shared/services/ids.service';
 
-import { Booking } from '../../models/booking.model';
+import { Booking } from '../../classes/booking.class';
 import { BookingsService } from '../../services/bookings.service';
 
 @Component({
@@ -15,7 +15,10 @@ export class BookingDetailsComponent implements OnInit {
   private params: Parameters = { currentId: '' };
   bookingDetails: Booking | undefined;
 
-  constructor(private bookingsService: BookingsService, private idService: IdService) { }
+  constructor(
+    private bookingsService: BookingsService,
+    private idService: IdService
+  ) { }
 
   ngOnInit(): void {
     this.idService.get(this.params);

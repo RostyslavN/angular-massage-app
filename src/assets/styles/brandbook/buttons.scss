@@ -22,9 +22,9 @@ button {
   }
 
   &.delete {
-    background-color: $red;
-    color: $white;
-    box-shadow: 1px 3px 10px 0px #fbd9da;
+    // background-color: $red;
+    color: $red;
+    box-shadow: 1px 3px 10px 0px #dedcdc;
   }
 
   &.info {
@@ -55,6 +55,7 @@ button {
     padding: 0;
     width: 45px;
     height: 42px;
+    margin-right: 10px;
 
     &.active-route {
       background-color: $purple;

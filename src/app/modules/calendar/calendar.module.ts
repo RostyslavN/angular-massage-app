@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarModule as MwlCalendar, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { HeaderComponent } from './components/header/header.component';
 import { WeekViewComponent } from './components/week-view/week-view.component';
+import { CalendarHeaderComponent } from './components/calendar-header/calendar-header.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    WeekViewComponent
+    WeekViewComponent,
+    CalendarHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +17,9 @@ import { WeekViewComponent } from './components/week-view/week-view.component';
       useFactory: adapterFactory,
     }),
   ],
-  exports: [WeekViewComponent]
+  exports: [
+    CalendarHeaderComponent,
+    WeekViewComponent
+  ]
 })
 export class CalendarModule { }

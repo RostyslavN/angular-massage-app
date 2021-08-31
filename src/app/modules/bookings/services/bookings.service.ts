@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
-import firebase from 'firebase/app';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 import { InitialServiceClass } from '../../shared/classes/initial-service.class';
-import { Booking } from '../models/booking.model';
+import { Booking } from '../classes/booking.class';
 
 @Injectable({
   providedIn: 'root'

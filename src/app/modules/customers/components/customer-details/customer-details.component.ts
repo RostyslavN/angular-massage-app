@@ -3,7 +3,7 @@ import { first } from 'rxjs';
 
 import { Parameters } from 'src/app/modules/shared/models/parameters.model';
 import { IdService } from 'src/app/modules/shared/services/ids.service';
-import { Customer} from '../../models/customer.model';
+import { Customer} from '../../classes/customer.class';
 import { CustomersService } from '../../services/customers.service';
 
 @Component({

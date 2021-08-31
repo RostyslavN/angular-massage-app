@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { Subject } from 'rxjs';
 
-import { DayClickEvent } from '../../models/dayClickEvent.model';
+import { BookingClickEvent } from '../../models/bookingClickEvent.model';
 import { TimeClickEvent } from '../../models/timeClickEvent.model';
 
 @Component({
@@ -13,24 +12,36 @@ import { TimeClickEvent } from '../../models/timeClickEvent.model';
 })
 export class WeekViewComponent implements OnInit {
   @Input() events: CalendarEvent[] = [];
-  viewDate: Date = new Date();
-  view: CalendarView = CalendarView.Week;
+  @Input() viewDate: Date;
+
+  @Output() create: EventEmitter<TimeClickEvent> = new EventEmitter<TimeClickEvent>();
+  @Output() update: EventEmitter<BookingClickEvent> = new EventEmitter<BookingClickEvent>();
+
   refresh: Subject<any> = new Subject();
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  openModalWithDay(event: DayClickEvent) {
-    this.router.navigate([`/bookings/create/${event.day.date}`]);
+  emitCreate(event: TimeClickEvent): void {
+    this.create.emit(event);
   }
 
-  openModalWithDate(event: TimeClickEvent) {
-    this.router.navigate([`/bookings/create`], {queryParams: {date: new Date(event.date).toUTCString()}});
+  emitUpdate(event: BookingClickEvent): void {
+    this.update.emit(event);
   }
 
-  openMenu({ event }: { event: CalendarEvent }) {
-    // n
-  }
+  // openBooking({ event }: { event: CalendarEvent }) {
+  //   this.bookingsService.getById(String(event.id)).pipe(first()).subscribe(res => this.booking = res || new Booking());
+  //   const dialogRef: MatDialogRef<UpdateBookingComponent> = this.dialog.open(UpdateBookingComponent, {
+  //     panelClass: 'modal-window',
+  //     data: new Booking(this.booking),
+  //     disableClose: true
+  //   });
+
+  //   // dialogRef.afterClosed().pipe(first()).subscribe(() => {
+  //   //   if (isCreated) this.getBookings();
+  //   // });
+  // }
 }

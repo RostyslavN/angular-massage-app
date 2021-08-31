@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { Parameters } from 'src/app/modules/shared/models/parameters.model';
 import { IdService } from 'src/app/modules/shared/services/ids.service';
-import { Booking } from '../../models/booking.model';
+import { Booking } from '../../classes/booking.class';
 import { BookingsService } from '../../services/bookings.service';
 
 @Component({
@@ -11,19 +12,32 @@ import { BookingsService } from '../../services/bookings.service';
   styleUrls: ['./update-booking.component.scss']
 })
 export class UpdateBookingComponent implements OnInit {
-  private params: Parameters = { currentId: '' };
 
-  constructor(private bookingsService: BookingsService, private idService: IdService) { }
+  constructor(
+    private bookingsService: BookingsService,
+    private dialogRef: MatDialogRef<UpdateBookingComponent>,
+    @Inject(MAT_DIALOG_DATA) public booking: Booking
+  ) { }
 
   ngOnInit(): void {
-    this.idService.get(this.params);
-    // update
+    console.log(this.booking)
   }
 
-  updateBooking(id: string, entity: Booking): void {
-    this.bookingsService.update(id, entity)
-      .then(() => console.log('Booking was succesfully updated'))
+  updateBooking(booking: Booking): void {
+    this.bookingsService.update(String(this.booking.id), booking)
+      .then(() => {
+        console.log('Booking was succesfully updated');
+        this.dialogRef.close(true);
+      })
       .catch(error => console.error('Error updating booking: ', error));
   }
 
+  deleteBooking(): void {
+    this.bookingsService.delete(String(this.booking.id))
+      .then(() => {
+        console.log('Booking was succesfully deleted');
+        this.dialogRef.close(true);
+      })
+      .catch(error => console.error('Error deleting booking: ', error));
+  }
 }

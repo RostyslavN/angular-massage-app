@@ -1,0 +1,73 @@
+<form [formGroup]="bookingForm">
+
+  <header class="dark">
+    <h3>{{ submitTitle }} booking</h3>
+    <button type="button" class="close" (click)="closeModal()">
+      <fa-icon [icon]="faTimesIcon"></fa-icon>
+    </button>
+  </header>
+
+  <section>
+    <div>
+      <p class="body-text">Booking name</p>
+      <div class="field">
+        <input type="text" formControlName="name" placeholder="Enter booking name.." cdkFocusInitial>
+        <span *ngIf="name?.invalid && name?.dirty" class="error-message">Booking name is required</span>
+      </div>
+    </div>
+    <div>
+      <p class="body-text">Patient details</p>
+      <div class="field">
+        <input type="text" formControlName="customerId" placeholder="Choose a client.." [matAutocomplete]="autoCustomer">
+        <span *ngIf="customerId?.invalid && customerId?.dirty" class="error-message">Choose a client from the
+          list</span>
+      </div>
+      <mat-autocomplete #autoCustomer="matAutocomplete">
+        <mat-option *ngFor="let customer of customers$ | async as customers" [value]="customer.id">
+          {{customer.fullName}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <div>
+      <p class="body-text">Doctor details</p>
+      <div class="field">
+        <input type="text" formControlName="doctorId" placeholder="Choose a doctor.." [matAutocomplete]="autoDoctor">
+        <span *ngIf="doctorId?.invalid && doctorId?.dirty" class="error-message">Choose a doctor from a list</span>
+      </div>
+      <mat-autocomplete #autoDoctor="matAutocomplete">
+        <mat-option *ngFor="let doctor of doctors$ | async as doctors" [value]="doctor.id">
+          {{doctor.fullName}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <div>
+      <p class="body-text">Booking details</p>
+      <div formGroupName="appointment">
+        <div class="field-wrapper">
+          <div class="field">
+            <input type="date" formControlName="date" placeholder="Date">
+            <span *ngIf="bookingDate?.invalid && bookingDate?.dirty" class="error-message">Enter correct date</span>
+          </div>
+          <div class="field">
+            <input type="time" formControlName="time" placeholder="Time">
+            <span *ngIf="bookingTime?.invalid && bookingTime?.dirty" class="error-message">Choose time between 08:00 and 19:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="body-text">Description:</p>
+      <div class="field">
+        <textarea type="date" formControlName="description" placeholder="Enter description.."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="field-wrapper">
+      <button *ngIf="submitTitle === 'Edit'" class="delete" (click)="deleteBooking()">Delete</button>
+      <button class="primary" (click)="submitForm()">{{ submitTitle }}</button>
+    </div>
+  </footer>
+
+</form>

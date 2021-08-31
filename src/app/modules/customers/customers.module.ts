@@ -10,6 +10,7 @@ import { UpdateCustomerComponent } from './components/update-customer/update-cus
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 import { CustomersListComponent } from './components/customers-list/customers-list.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CustomersListComponent } from './components/customers-list/customers-li
     CommonModule,
     CustomersRoutingModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatAutocompleteModule
   ]
 })
 export class CustomersModule { }
